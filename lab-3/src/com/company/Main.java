@@ -11,24 +11,25 @@ public class Main {
 
         String userInput = getOperation();
         while (!"q".equals(userInput)) {
-            if ("!".equals(userInput)) firstNumber = getInt();
-            else { firstNumber = getInt();
-                   secondNumber = getInt(); }
+            firstNumber = getInt();
+            if (!"!".equals(userInput)) {
+                secondNumber = getInt();
+            }
 
             switch (userInput) {
                 case "+":
-                    System.out.println((double) plus());
+                    System.out.println(plus());
                     break;
                 case "-":
-                    System.out.println((double) minus());
+                    System.out.println(minus());
                     break;
                 case "*":
-                    System.out.println((double) ymn());
+                    System.out.println(ymn());
                     break;
                 case "/":
                     if (secondNumber == 0)
                         System.out.println("Division By Zero!!'");
-                    else System.out.println((double) del());
+                    else System.out.println(del());
                     break;
                 case "!":
                     System.out.println(fact());
@@ -37,7 +38,7 @@ public class Main {
                     System.out.println("invalid operation ");
                     break;
             }
-             userInput = getOperation();
+            userInput = getOperation();
         }
         scanner.close();
     }
@@ -60,35 +61,34 @@ public class Main {
 
     private static int fact() {
         int res = 1;
-        try {
-            if (firstNumber >= 10) throw new Exception("The number must not be more than 10");
+        if (firstNumber > 10) {
+            System.out.println("The number must not be more than 10");
+        } else {
             for (int i = 2; i <= firstNumber; i++) {
                 res *= i;
             }
         }
-        catch(Exception ex){
-            System.out.println(ex.getMessage());
-        }
         return res;
     }
+
     public static int getInt() {
         System.out.println("Enter the number:");
         int num;
         if (scanner.hasNextInt()) {
             num = scanner.nextInt();
             // integer out of range ??
-        }
-        else {
+        } else {
             System.out.println("You made a mistake entering the number. Try again.");
             scanner.next();
             num = getInt();
         }
         return num;
     }
+
     public static String getOperation() {
         System.out.println("Enter operation:");
         String operation;
-        if(scanner.hasNext()){
+        if (scanner.hasNext()) {
             operation = scanner.next();
         } else {
             System.out.println("You made a mistake entering the operation. Try again.");
