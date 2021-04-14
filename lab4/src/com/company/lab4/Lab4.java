@@ -1,24 +1,24 @@
-package hierarchy;
+package com.company.lab4;
 
 import java.util.ArrayList;
 import java.util.Currency;
 import java.util.List;
 
-class hierarchy {
+class Hierarchy {
     public static void main(String[] args) {
         System.out.println("Hello, hierarchy");
-        operation.main1();
-        valut.main2();
+        Operation.main1();
+        Valut.main2();
     }
-    static class operation {
+    static class Operation {
          public enum OperType {
             SALE,
-            BYE
+            BUY
         }
         private OperType operType;
         private String name;
         private Emmitent emmitent;
-        public void Operation(OperType operType, String name, Emmitent emmitent) {
+        public Operation(OperType operType, String name, Emmitent emmitent) {
             this.operType = operType;
             this.name = name;
             this.emmitent = emmitent;
@@ -42,19 +42,19 @@ class hierarchy {
             this.emmitent = emmitent;
         }
         public class Journal {
-            private List<operation> operations;
+            private List<Operation> operations;
             public Journal() {
-                operations = new ArrayList<operation>();
+                operations = new ArrayList<>();
             }
 
-            public List<operation> getOperations() {
+            public List<Operation> getOperations() {
                 return operations;
             }
         }
         public static void main1() { System.out.println("Hello, operation");}
      }
 
-    static class valut {
+    static class Valut {
         public static void main2() {
             System.out.println("Hello, valut");
         }
