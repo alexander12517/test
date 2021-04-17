@@ -1,102 +1,200 @@
-package com.company;
+package hierarchy;
 
-import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Currency;
+import java.util.List;
 
-public class Main {
-    static int firstNumber;
-    static int secondNumber;
-    static Scanner scanner = new Scanner(System.in);
-
+class hierarchy {
     public static void main(String[] args) {
-
-        String userInput = getOperation();
-        while (!"q".equals(userInput)) {
-            if ("!".equals(userInput)) firstNumber = getInt();
-            else { firstNumber = getInt();
-                   secondNumber = getInt(); }
-
-            switch (userInput) {
-                case "+":
-                    System.out.println((double) plus());
-                    break;
-                case "-":
-                    System.out.println((double) minus());
-                    break;
-                case "*":
-                    System.out.println((double) ymn());
-                    break;
-                case "/":
-                    if (secondNumber == 0)
-                        System.out.println("Division By Zero!!'");
-                    else System.out.println((double) del());
-                    break;
-                case "!":
-                    System.out.println(fact());
-                    break;
-                default:
-                    System.out.println("invalid operation ");
-                    break;
-            }
-             userInput = getOperation();
+        System.out.println("Hello, hierarchy");
+        operation.main1();
+        valut.main2();
+    }
+    static class operation {
+         public enum OperType {
+            SALE,
+            BYE
         }
-        scanner.close();
-    }
+        private OperType operType;
+        private String name;
+        private Emmitent emmitent;
+        public void Operation(OperType operType, String name, Emmitent emmitent) {
+            this.operType = operType;
+            this.name = name;
+            this.emmitent = emmitent;
+        }
+        public OperType getOperType() {
+            return operType;
+        }
+        public void setOperType(OperType operType) {
+            this.operType = operType;
+        }
+        public String getName() {
+            return name;
+        }
+        public void setName(String name) {
+            this.name = name;
+        }
+        public Emmitent getEmmitent() {
+            return emmitent;
+        }
+        public void setEmmitent(Emmitent emmitent) {
+            this.emmitent = emmitent;
+        }
+        public class Journal {
+            private List<operation> operations;
+            public Journal() {
+                operations = new ArrayList<operation>();
+            }
 
-    private static int plus() {
-        return firstNumber + secondNumber;
-    }
-
-    private static int minus() {
-        return firstNumber - secondNumber;
-    }
-
-    private static int ymn() {
-        return firstNumber * secondNumber;
-    }
-
-    private static int del() {
-        return firstNumber / secondNumber;
-    }
-
-    private static int fact() {
-        int res = 1;
-        try {
-            if (firstNumber >= 10) throw new Exception("The number must not be more than 10");
-            for (int i = 2; i <= firstNumber; i++) {
-                res *= i;
+            public List<operation> getOperations() {
+                return operations;
             }
         }
-        catch(Exception ex){
-            System.out.println(ex.getMessage());
+        public static void main1() { System.out.println("Hello, operation");}
+     }
+
+    static class valut {
+        public static void main2() {
+            System.out.println("Hello, valut");
         }
-        return res;
+        public class Currency {
+            private String name;
+            private Number value;
+
+            public String getName() {
+                return name;
+            }
+
+            public void setName(String name) {
+                this.name = name;
+            }
+
+            public Number getValue() {
+                return value;
+            }
+
+            public void setValue(Number value) {
+                this.value = value;
+            }
+
+            public Currency(String name, Number value) {
+                this.name = name;
+                this.value = value;
+            }
+        }
     }
-    public static int getInt() {
-        System.out.println("Enter the number:");
-        int num;
-        if (scanner.hasNextInt()) {
-            num = scanner.nextInt();
-            // integer out of range ??
+
+    public class Stock {
+        private long number;
+        public Stock(long number) {
+            this.number = number;
         }
-        else {
-            System.out.println("You made a mistake entering the number. Try again.");
-            scanner.next();
-            num = getInt();
+
+        public long getNumber() {
+            return number;
         }
-        return num;
+
+        public void setNumber(long number) {
+            this.number = number;
+        }
+
+        private Emmitent emmitent;
+
+        public Stock(long number, Emmitent emmitent) {
+            this.number = number;
+            this.emmitent = emmitent;
+        }
+
+        public Emmitent getEmmitent() {
+            return emmitent;
+        }
+
+        public void setEmmitent(Emmitent emmitent) {
+            this.emmitent = emmitent;
+        }
     }
-    public static String getOperation() {
-        System.out.println("Enter operation:");
-        String operation;
-        if(scanner.hasNext()){
-            operation = scanner.next();
-        } else {
-            System.out.println("You made a mistake entering the operation. Try again.");
-            scanner.next();
-            operation = getOperation();
+
+    public class Market {
+        private String name;
+        private List<Currency> currencyList;
+        public Market(String name, List<Currency> currencyList) {
+            this.name = name;
+            this.currencyList = currencyList;
         }
-        return operation;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public List<Currency> getCurrencyList() {
+            return currencyList;
+        }
+
+        public void setCurrencyList(List<Currency> currencyList) {
+            this.currencyList = currencyList;
+        }
+
+        private Emmitent emmitent;
+
+        public Market(String name, Emmitent emmitent, List<Currency> currencyList) {
+            this.name = name;
+            this.emmitent = emmitent;
+            this.currencyList = currencyList;
+        }
+
+        public Emmitent getEmmitent() {
+            return emmitent;
+        }
+
+        public void setEmmitent(Emmitent emmitent) {
+            this.emmitent = emmitent;
+        }
+
     }
+    public class Emmitent {
+        private String name;
+        public Emmitent(String name){
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        private Stock stock;
+        private List<Market> marketList;
+
+        public Emmitent(String name, Stock stock, List<Market> marketList) {
+            this.name = name;
+            this.stock = stock;
+            this.marketList = marketList;
+        }
+
+        public Stock getStock() {
+            return stock;
+        }
+
+        public void setStock(Stock stock) {
+            this.stock = stock;
+        }
+
+        public List<Market> getMarketList() {
+            return marketList;
+        }
+
+        public void setMarketList(List<Market> marketList) {
+            this.marketList = marketList;
+        }
+
+    }
+
 }
-
-
