@@ -1,7 +1,4 @@
-package com.luxoft.lab12;
-
-import java.util.LinkedHashMap;
-import java.util.List;
+package lab12;
 
 public class Main {
 

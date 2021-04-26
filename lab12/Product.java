@@ -1,4 +1,4 @@
-package com.luxoft.lab12;
+package lab12;
 
 public class Product {
 
