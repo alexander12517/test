@@ -1,25 +1,20 @@
-package com.luxoft.lab9;
+package lab9;
 
 import java.util.*;
 
 public class Main {
-    private Scanner in;
-    private TreeMap<String, TreeMap<String, Integer>> clients;
+    private final Scanner in;
+    private final TreeMap<String, TreeMap<String, Integer>> clients;
 
     public Main(Scanner in) {
         this.in = in;
-        clients = new TreeMap<String, TreeMap<String, Integer>>();
+        clients = new TreeMap<>();
     }
 
-    public void Purchases() {
-        String inputString = "";
-        String clientName = "";
-        String productName = "";
-        Integer productCount = 0;
-
+    public void purchases() {
         while (true) {
             System.out.print("Enter: 'client product count' or 'quit' : ");
-            inputString = in.nextLine();
+            String inputString = in.nextLine();
             if ("quit".equals(inputString)) {
                 return;
             }
@@ -27,17 +22,15 @@ public class Main {
             String[] parts = inputString.split(" ");
             if (parts.length != 3) {
                 System.out.println("Wrong number of arguments! Retry!" + parts.length + " " + parts[0]);
-                inputString = "";
                 continue;
             }
             try {
-                clientName = parts[0];
-                productName = parts[1];
-                productCount = Integer.parseInt(parts[2]);
+                String clientName = parts[0];
+                String productName = parts[1];
+                int productCount = Integer.parseInt(parts[2]);
                 updateClientsMap(clientName, productName, productCount);
             } catch (NumberFormatException e) {
                 System.out.println("invalid number. " + e.getMessage() + " Retry!");
-                inputString = "";
             } catch (Exception e) {
                 System.out.println("Unexpected error. " + e.getMessage());
                 return;
@@ -45,7 +38,7 @@ public class Main {
         }
     }
 
-    public void Statistic() {
+    public void statistic() {
         TreeMap<String, Integer> client;
         for (String clientKey : clients.navigableKeySet()) {
             System.out.println(clientKey + ":");
@@ -60,7 +53,7 @@ public class Main {
     private void updateClientsMap(String clientName, String productName, int productCount) {
         TreeMap<String, Integer> client;
         if (!clients.containsKey(clientName)) {
-            client = new TreeMap<String, Integer>();
+            client = new TreeMap<>();
             client.put(productName, productCount);
             clients.put(clientName, client);
         }
@@ -77,7 +70,7 @@ public class Main {
 
     public static void main(String[] args) {
         Main shop = new Main(new Scanner(System.in));
-        shop.Purchases();
-        shop.Statistic();
+        shop.purchases();
+        shop.statistic();
     }
 }
