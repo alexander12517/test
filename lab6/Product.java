@@ -1,9 +1,7 @@
 package lab6;
 
-public class Product implements Comparable<Product>{
+public class Product implements Comparable<Product> {
 
-//public class Product {
-//public class Product {
     private int count;
     private float cost;
     private String name;
@@ -37,15 +35,12 @@ public class Product implements Comparable<Product>{
     public void setName(String name) {
         this.name = name;
     }
+
     @Override
     public int compareTo(Product o) {
-        if(this.count > o.count){
-            return -1;
-        } else if(this.count < o.count){
-            return 1;
-        }
-        return 0;
+        return o.count - this.count;
     }
+
     @Override
     public String toString() {
         return "Product{" +
