@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Currency;
 import java.util.List;
 
-class hierarchy {
+class Hierarchy {
     public static void main(String[] args) {
         System.out.println("Hello, hierarchy");
         operation.main1();
