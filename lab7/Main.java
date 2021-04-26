@@ -28,8 +28,8 @@ public class Main {
         myArrayList.remove(2);
 
         System.out.println ("Первый элемент ArrayList:" + myArrayList.get(0));
-        System.out.println ("Первый элемент ArrayList:" + myArrayList.get(1));
-        System.out.println ("Первый элемент ArrayList:" + myArrayList.get(2));
+        System.out.println ("Второй элемент ArrayList:" + myArrayList.get(1));
+        System.out.println ("Третий элемент ArrayList:" + myArrayList.get(2));
 
         for (int i = 0; i < myArrayList.size(); i++) System.out.println(myArrayList.get(i));
 

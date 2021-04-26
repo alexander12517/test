@@ -1,8 +1,10 @@
 package lab7;
 
+import java.util.Arrays;
+
 public class MyArrayList<T> {
-    private final int INIT_SIZE = 16;
-    private final int CUT_RATE = 4;
+    private static final int INIT_SIZE = 16;
+    private static final int CUT_RATE = 4;
     private Object[] array = new Object[INIT_SIZE];
     private int pointer = 0;
 
@@ -11,21 +13,23 @@ public class MyArrayList<T> {
     массива происходит его увеличение в два раза.
     */
     public void add(T item) {
-        if(pointer == array.length-1)
-            resize(array.length*2); // увеличу в 2 раза, если достигли границ
+        if (pointer == array.length - 1)
+            resize(array.length * 2); // увеличу в 2 раза, если достигли границ
         array[pointer++] = item;
     }
-// функция расширения List-а
+
+    // функция расширения List-а
     private void resize(int newLength) {
-        Object[] newArray = new Object[newLength];
-        System.arraycopy(array, 0, newArray, 0, pointer);
-        array = newArray;
+        array = Arrays.copyOf(array, newLength);
     }
+
     /*
     Возвращает элемент списка по индексу.
     */
     public T get(int index) {
-        return (T) array[index];
+        @SuppressWarnings("unchecked")
+        T t = (T) array[index];
+        return t;
     }
 
     /*
@@ -36,14 +40,15 @@ public class MyArrayList<T> {
     места.
     */
     public void remove(int index) {
-        for (int i = index; i<pointer; i++)
-            array[i] = array[i+1];
+        for (int i = index; i < pointer; i++)
+            array[i] = array[i + 1];
         array[pointer] = null;
         pointer--;
         if (array.length > INIT_SIZE && pointer < array.length / CUT_RATE)
-            resize(array.length/2); // если элементов в CUT_RATE раз меньше чем
+            resize(array.length / 2); // если элементов в CUT_RATE раз меньше чем
         // длина массива, то уменьшу в два раза
     }
+
     /*Возвращает количество элементов в списке*/
     public int size() {
         return pointer;
