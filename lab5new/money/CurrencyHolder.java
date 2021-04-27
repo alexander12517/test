@@ -1,4 +1,4 @@
-package model.money;
+package lab5new.money;
 
 import java.util.HashMap;
 import java.util.Map;

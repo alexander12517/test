@@ -1,6 +1,6 @@
-package model.account;
+package lab5new.account;
 
-import model.score.Score;
+import lab5new.score.Score;
 import java.util.HashMap;
 import java.util.Map;
 

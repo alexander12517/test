@@ -1,4 +1,4 @@
-package model.money;
+package lab5new.money;
 
 public interface MoneyInterface {
     void addMoney(Money money);

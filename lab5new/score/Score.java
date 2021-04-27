@@ -1,8 +1,8 @@
-package model.score;
+package lab5new.score;
 
-import model.account.Account;
-import model.money.Money;
-import model.money.MoneyInterface;
+import lab5new.account.Account;
+import lab5new.money.Money;
+import lab5new.money.MoneyInterface;
 
 public abstract class Score implements MoneyInterface {
     private Money balance;

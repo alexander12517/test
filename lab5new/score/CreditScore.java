@@ -1,7 +1,7 @@
-package model.score;
+package lab5new.score;
 
-import model.account.Account;
-import model.money.Money;
+import lab5new.account.Account;
+import lab5new.money.Money;
 
 public class CreditScore extends Score {
     public CreditScore(Money balance, Account owner, Integer number) {

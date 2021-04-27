@@ -1,4 +1,4 @@
-package model.money;
+package lab5new.money;
 
 public class Currency {
     private String name;

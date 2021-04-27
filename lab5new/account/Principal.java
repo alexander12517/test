@@ -1,4 +1,4 @@
-package model.account;
+package lab5new.account;
 
 public class Principal {
 
